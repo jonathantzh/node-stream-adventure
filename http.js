@@ -1,5 +1,4 @@
 var http = require('http');
-var fs = require('fs');
 var through = require('through2');
 
 var server = http.createServer(function (req,res) {
@@ -7,8 +6,8 @@ var server = http.createServer(function (req,res) {
     console.log('Send me a POST!');//code
     }
     
-    req = through(write,end).pipe(res);;
-    res.end('\n');
+    req.pipe(through(write,end)).pipe(res);;
+    //res.end('\n');
 
 })
 
